@@ -1,11 +1,26 @@
 const nodemailer = require('nodemailer');
 
-// Create transporter
+// Create transporter with custom SMTP
 const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || 'gmail',
+  host: process.env.EMAIL_HOST,
+  port: parseInt(process.env.EMAIL_PORT),
+  secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
+  },
+  tls: {
+    // Non rifiutare certificati non autorizzati (utile per alcuni server)
+    rejectUnauthorized: false
+  }
+});
+
+// Verify connection configuration
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log('❌ Email server connection error:', error);
+  } else {
+    console.log('✅ Email server is ready to send messages');
   }
 });
 
@@ -15,7 +30,7 @@ const transporter = nodemailer.createTransport({
 async function sendConfirmation(booking) {
   try {
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Comune di Codroipo" <${process.env.EMAIL_USER}>`,
       to: booking.email,
       subject: 'Conferma Prenotazione - Comune di Codroipo',
       html: `
@@ -53,10 +68,10 @@ async function sendConfirmation(booking) {
     };
     
     const info = await transporter.sendMail(mailOptions);
-    console.log('Confirmation email sent:', info.messageId);
+    console.log('✅ Confirmation email sent:', info.messageId);
     return info;
   } catch (error) {
-    console.error('Error sending confirmation email:', error);
+    console.error('❌ Error sending confirmation email:', error);
     throw error;
   }
 }
@@ -67,7 +82,7 @@ async function sendConfirmation(booking) {
 async function sendReminder(booking) {
   try {
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Comune di Codroipo" <${process.env.EMAIL_USER}>`,
       to: booking.email,
       subject: 'Promemoria Appuntamento - Comune di Codroipo',
       html: `
@@ -95,10 +110,10 @@ async function sendReminder(booking) {
     };
     
     const info = await transporter.sendMail(mailOptions);
-    console.log('Reminder email sent:', info.messageId);
+    console.log('✅ Reminder email sent:', info.messageId);
     return info;
   } catch (error) {
-    console.error('Error sending reminder email:', error);
+    console.error('❌ Error sending reminder email:', error);
     throw error;
   }
 }
@@ -109,7 +124,7 @@ async function sendReminder(booking) {
 async function sendCancellation(booking) {
   try {
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Comune di Codroipo" <${process.env.EMAIL_USER}>`,
       to: booking.email,
       subject: 'Cancellazione Appuntamento - Comune di Codroipo',
       html: `
@@ -136,10 +151,10 @@ async function sendCancellation(booking) {
     };
     
     const info = await transporter.sendMail(mailOptions);
-    console.log('Cancellation email sent:', info.messageId);
+    console.log('✅ Cancellation email sent:', info.messageId);
     return info;
   } catch (error) {
-    console.error('Error sending cancellation email:', error);
+    console.error('❌ Error sending cancellation email:', error);
     throw error;
   }
 }

@@ -1,0 +1,167 @@
+{
+  "services": [
+    {
+      "id": "CERTIFICATO_RESIDENZA",
+      "name": "Certificato di Residenza",
+      "description": "Il certificato di residenza attesta la residenza anagrafica di una persona fisica in un determinato comune.",
+      "office": "Ufficio Anagrafe",
+      "hours": "Lunedì-Venerdì 9:00-13:00, Martedì e Giovedì anche 15:00-17:00",
+      "documents": [
+        "Documento di identità valido",
+        "Codice fiscale"
+      ],
+      "cost": "Gratuito per uso amministrativo, €16.52 per uso privato",
+      "processingTime": "Rilascio immediato",
+      "bookingEnabled": true,
+      "faq": [
+        {
+          "question": "Come posso richiedere il certificato di residenza?",
+          "answer": "Puoi richiederlo di persona presso l'ufficio anagrafe, online tramite ANPR o prenotando un appuntamento."
+        },
+        {
+          "question": "Quali documenti servono per il certificato di residenza?",
+          "answer": "È necessario presentare un documento di identità valido e il codice fiscale."
+        },
+        {
+          "question": "Quanto tempo ci vuole per avere il certificato?",
+          "answer": "Il certificato viene rilasciato immediatamente se richiesto di persona."
+        },
+        {
+          "question": "Quanto costa il certificato di residenza?",
+          "answer": "È gratuito se richiesto per uso amministrativo, costa €16.52 per uso privato."
+        }
+      ]
+    },
+    {
+      "id": "CARTA_IDENTITA",
+      "name": "Carta d'Identità Elettronica (CIE)",
+      "description": "La Carta d'Identità Elettronica è il documento di riconoscimento dei cittadini italiani che sostituisce la vecchia carta d'identità cartacea.",
+      "office": "Ufficio Anagrafe",
+      "hours": "Lunedì-Venerdì 9:00-13:00, Martedì e Giovedì anche 15:00-17:00",
+      "documents": [
+        "Carta d'identità scaduta o in scadenza",
+        "Fototessera recente (o foto al momento)",
+        "Codice fiscale",
+        "Per i minorenni: presenza di entrambi i genitori"
+      ],
+      "cost": "€22.21 (pagamento con bancomat o carta)",
+      "processingTime": "Rilascio entro 6 giorni lavorativi, recapito tramite posta",
+      "bookingEnabled": true,
+      "faq": [
+        {
+          "question": "Come prenotare per la carta d'identità?",
+          "answer": "Puoi prenotare un appuntamento chiamando l'ufficio anagrafe o usando l'assistente virtuale."
+        },
+        {
+          "question": "Quanto costa la carta d'identità elettronica?",
+          "answer": "Il costo è di €22.21, da pagare con bancomat o carta di credito."
+        },
+        {
+          "question": "Quali documenti devo portare per il rilascio?",
+          "answer": "Porta la vecchia carta d'identità, il codice fiscale e una fototessera recente."
+        },
+        {
+          "question": "In quanto tempo viene rilasciata la CIE?",
+          "answer": "La carta viene prodotta e recapitata entro 6 giorni lavorativi tramite posta."
+        }
+      ]
+    },
+    {
+      "id": "TARI",
+      "name": "TARI - Tassa Rifiuti",
+      "description": "La TARI è la tassa sui rifiuti dovuta da chiunque possieda o detenga locali o aree scoperte suscettibili di produrre rifiuti urbani.",
+      "office": "Ufficio Tributi",
+      "hours": "Lunedì-Venerdì 9:00-12:30, Martedì anche 15:30-17:00",
+      "documents": [
+        "Codice fiscale",
+        "Avviso di pagamento (se disponibile)",
+        "Documenti catastali dell'immobile"
+      ],
+      "cost": "Variabile in base alla superficie e alla tipologia dell'immobile",
+      "processingTime": "Assistenza immediata",
+      "bookingEnabled": true,
+      "faq": [
+        {
+          "question": "Come posso pagare la TARI?",
+          "answer": "Puoi pagare tramite bollettino postale, F24, PagoPA o presso gli sportelli bancari abilitati."
+        },
+        {
+          "question": "Quando scadono le rate della TARI?",
+          "answer": "Generalmente le rate scadono in tre periodi: aprile, luglio e dicembre."
+        },
+        {
+          "question": "Come richiedere una rateizzazione del pagamento?",
+          "answer": "Puoi presentare domanda di rateizzazione presso l'ufficio tributi allegando documentazione che attesti difficoltà economiche."
+        }
+      ]
+    },
+    {
+      "id": "PRATICHE_EDILIZIE",
+      "name": "Pratiche Edilizie (SCIA, Permessi)",
+      "description": "Servizi per la presentazione di pratiche edilizie, SCIA, permessi di costruire e altre autorizzazioni per lavori edilizi.",
+      "office": "Ufficio Tecnico - Edilizia Privata",
+      "hours": "Martedì e Giovedì 9:00-12:30",
+      "documents": [
+        "Documentazione tecnica redatta da professionista abilitato",
+        "Planimetrie e elaborati grafici",
+        "Relazioni tecniche",
+        "Moduli compilati",
+        "Marca da bollo"
+      ],
+      "cost": "Variabile in base al tipo di pratica e agli oneri concessori",
+      "processingTime": "30-60 giorni per permesso di costruire, immediato per SCIA",
+      "bookingEnabled": true,
+      "faq": [
+        {
+          "question": "Cosa è necessario per presentare una SCIA?",
+          "answer": "Serve la documentazione tecnica redatta da un professionista abilitato, planimetrie, relazioni tecniche e i moduli compilati."
+        },
+        {
+          "question": "Quanto tempo ci vuole per ottenere un permesso di costruire?",
+          "answer": "Il procedimento dura generalmente 30-60 giorni dall'invio della pratica completa."
+        },
+        {
+          "question": "Posso prenotare un appuntamento con l'ufficio tecnico?",
+          "answer": "Sì, puoi prenotare un appuntamento chiamando l'ufficio o tramite l'assistente virtuale."
+        }
+      ]
+    },
+    {
+      "id": "SERVIZI_SOCIALI",
+      "name": "Servizi Sociali e Assistenza",
+      "description": "Servizi di assistenza sociale per cittadini in difficoltà, sostegno alle famiglie, anziani e persone con disabilità.",
+      "office": "Ufficio Servizi Sociali",
+      "hours": "Lunedì, Mercoledì e Venerdì 9:00-12:00, su appuntamento",
+      "documents": [
+        "Documento di identità",
+        "Codice fiscale",
+        "ISEE in corso di validità",
+        "Eventuale documentazione sanitaria"
+      ],
+      "cost": "Gratuito, salvo compartecipazione basata su ISEE",
+      "processingTime": "Variabile in base al servizio richiesto",
+      "bookingEnabled": true,
+      "faq": [
+        {
+          "question": "Come posso richiedere assistenza sociale?",
+          "answer": "Prenota un colloquio con un'assistente sociale chiamando l'ufficio o tramite l'assistente virtuale."
+        },
+        {
+          "question": "Quali sono i requisiti per accedere ai servizi sociali?",
+          "answer": "I requisiti variano in base al servizio. Generalmente serve ISEE aggiornato e documentazione che attesti la situazione di bisogno."
+        },
+        {
+          "question": "Quali documenti portare per il primo colloquio?",
+          "answer": "Porta documento d'identità, codice fiscale, ISEE e eventuale documentazione sanitaria o sociale pertinente."
+        }
+      ]
+    }
+  ],
+  "generalInfo": {
+    "municipality": "Comune di Codroipo",
+    "address": "Piazza Garibaldi, 1 - 33033 Codroipo (UD)",
+    "phone": "0432-123456",
+    "email": "info@comune.codroipo.ud.it",
+    "bookingInstructions": "Per prenotare un appuntamento, fornisci: nome completo, email, telefono (opzionale), servizio desiderato, data e orario preferiti. Verificherò la disponibilità e confermerò la prenotazione."
+  }
+}
