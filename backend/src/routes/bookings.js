@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Booking = require('../models/Booking');
-//const calendarService = require('../services/calendar');
-const calendarService = require('../services/calendarMock');
+const calendarService = require('../services/calendar');
+//const calendarService = require('../services/calendarMock');
 const emailService = require('../services/email');
 
 // GET all bookings

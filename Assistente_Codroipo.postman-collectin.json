@@ -1,0 +1,413 @@
+{
+  "info": {
+    "name": "Assistente Virtuale Codroipo",
+    "description": "API Collection per il backend dell'assistente virtuale",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Verifica che il server sia online"
+      }
+    },
+    {
+      "name": "Services",
+      "item": [
+        {
+          "name": "Get All Services",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/services",
+              "host": ["{{base_url}}"],
+              "path": ["api", "services"]
+            },
+            "description": "Ottieni lista di tutti i servizi attivi"
+          }
+        },
+        {
+          "name": "Get Service by Code",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/services/CARTA_IDENTITA",
+              "host": ["{{base_url}}"],
+              "path": ["api", "services", "CARTA_IDENTITA"]
+            },
+            "description": "Ottieni dettagli di un servizio specifico"
+          }
+        },
+        {
+          "name": "Create Service",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"TEST_SERVICE\",\n  \"name\": \"Servizio di Test\",\n  \"description\": \"Questo è un servizio di test\",\n  \"office\": \"Ufficio Test\",\n  \"hours\": \"Lunedì-Venerdì 9:00-13:00\",\n  \"documents\": [\"Documento 1\", \"Documento 2\"],\n  \"cost\": \"Gratuito\",\n  \"processingTime\": \"Immediato\",\n  \"bookingEnabled\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/services",
+              "host": ["{{base_url}}"],
+              "path": ["api", "services"]
+            },
+            "description": "Crea un nuovo servizio"
+          }
+        },
+        {
+          "name": "Update Service",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hours\": \"Lunedì-Venerdì 8:00-14:00\",\n  \"cost\": \"€10.00\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/services/TEST_SERVICE",
+              "host": ["{{base_url}}"],
+              "path": ["api", "services", "TEST_SERVICE"]
+            },
+            "description": "Aggiorna un servizio esistente"
+          }
+        },
+        {
+          "name": "Delete Service",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/services/TEST_SERVICE",
+              "host": ["{{base_url}}"],
+              "path": ["api", "services", "TEST_SERVICE"]
+            },
+            "description": "Elimina (soft delete) un servizio"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Get All Bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/bookings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"]
+            },
+            "description": "Ottieni tutte le prenotazioni"
+          }
+        },
+        {
+          "name": "Get Bookings by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/bookings?status=confirmed",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "confirmed",
+                  "description": "pending, confirmed, cancelled, completed"
+                }
+              ]
+            },
+            "description": "Filtra prenotazioni per stato"
+          }
+        },
+        {
+          "name": "Get Bookings by Date",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/bookings?date=2025-11-15",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-11-15",
+                  "description": "Formato: YYYY-MM-DD"
+                }
+              ]
+            },
+            "description": "Filtra prenotazioni per data"
+          }
+        },
+        {
+          "name": "Get Bookings by Email",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/bookings?email=test@example.com",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "test@example.com"
+                }
+              ]
+            },
+            "description": "Filtra prenotazioni per email"
+          }
+        },
+        {
+          "name": "Get Booking by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/bookings/{{booking_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings", "{{booking_id}}"]
+            },
+            "description": "Ottieni dettagli di una prenotazione specifica"
+          }
+        },
+        {
+          "name": "Create Booking (Vapi Compatible)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.environment.set(\"booking_id\", jsonData.booking.id);",
+                  "    console.log(\"Booking ID salvato: \" + jsonData.booking.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service\": \"Carta d'Identità Elettronica\",\n  \"serviceCode\": \"CARTA_IDENTITA\",\n  \"name\": \"Mario Rossi\",\n  \"email\": \"mario.rossi@example.com\",\n  \"phone\": \"333-1234567\",\n  \"date\": \"2025-11-15\",\n  \"time\": \"10:00\",\n  \"notes\": \"Prima richiesta CIE\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/bookings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"]
+            },
+            "description": "Crea una nuova prenotazione (formato compatibile con Vapi)"
+          }
+        },
+        {
+          "name": "Update Booking",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2025-11-16\",\n  \"time\": \"11:00\",\n  \"notes\": \"Orario modificato\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/bookings/{{booking_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings", "{{booking_id}}"]
+            },
+            "description": "Modifica una prenotazione esistente"
+          }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/bookings/{{booking_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings", "{{booking_id}}"]
+            },
+            "description": "Cancella una prenotazione"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calendar",
+      "item": [
+        {
+          "name": "Check Availability (Vapi Function)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2025-11-15\",\n  \"time\": \"10:00\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/calendar/check",
+              "host": ["{{base_url}}"],
+              "path": ["api", "calendar", "check"]
+            },
+            "description": "Verifica disponibilità di uno slot (usata da Vapi)"
+          }
+        },
+        {
+          "name": "Get Available Slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/calendar/slots/2025-11-15",
+              "host": ["{{base_url}}"],
+              "path": ["api", "calendar", "slots", "2025-11-15"]
+            },
+            "description": "Ottieni tutti gli slot disponibili per una data"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Get Google OAuth URL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/auth/google/url",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "google", "url"]
+            },
+            "description": "Ottieni URL per autenticazione Google Calendar"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test Data",
+      "item": [
+        {
+          "name": "Create Multiple Test Bookings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service\": \"Certificato di Residenza\",\n  \"serviceCode\": \"CERTIFICATO_RESIDENZA\",\n  \"name\": \"Giulia Verdi\",\n  \"email\": \"giulia.verdi@example.com\",\n  \"phone\": \"340-7654321\",\n  \"date\": \"2025-11-16\",\n  \"time\": \"09:30\",\n  \"notes\": \"Certificato per uso amministrativo\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/bookings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"]
+            },
+            "description": "Crea prenotazione test - Certificato Residenza"
+          }
+        },
+        {
+          "name": "Test TARI Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service\": \"TARI - Tassa Rifiuti\",\n  \"serviceCode\": \"TARI\",\n  \"name\": \"Luca Bianchi\",\n  \"email\": \"luca.bianchi@example.com\",\n  \"phone\": \"338-9876543\",\n  \"date\": \"2025-11-17\",\n  \"time\": \"11:00\",\n  \"notes\": \"Richiesta rateizzazione\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/bookings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"]
+            },
+            "description": "Crea prenotazione test - TARI"
+          }
+        },
+        {
+          "name": "Test Pratiche Edilizie Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service\": \"Pratiche Edilizie (SCIA, Permessi)\",\n  \"serviceCode\": \"PRATICHE_EDILIZIE\",\n  \"name\": \"Anna Neri\",\n  \"email\": \"anna.neri@example.com\",\n  \"phone\": \"349-1122334\",\n  \"date\": \"2025-11-18\",\n  \"time\": \"10:30\",\n  \"notes\": \"Presentazione SCIA per ristrutturazione\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/bookings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "bookings"]
+            },
+            "description": "Crea prenotazione test - Pratiche Edilizie"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "booking_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

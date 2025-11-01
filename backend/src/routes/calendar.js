@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-//const calendarService = require('../services/calendar');
-const calendarService = require('../services/calendarMock');
+const calendarService = require('../services/calendar');
+//const calendarService = require('../services/calendarMock');
 
 // POST check availability for a time slot
 router.post('/check', async (req, res) => {
