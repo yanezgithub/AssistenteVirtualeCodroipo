@@ -120,3 +120,28 @@ Per problemi o domande, consulta la documentazione o apri una issue.
 ## Licenza
 
 Proprietario - Comune di Codroipo
+
+## 🔧 Environment Variables Setup
+
+1. Copy the example environment file:
+```bash
+   cp .env.example .env
+```
+
+2. Fill in your credentials in `.env`:
+
+   ### Required:
+   - `MONGODB_URI` - Your MongoDB connection string
+   - `VAPI_API_KEY` - From https://dashboard.vapi.ai/account
+   - `VAPI_ASSISTANT_ID` - From your Vapi assistant dashboard
+   - `GOOGLE_CLIENT_ID` - From Google Cloud Console
+   - `GOOGLE_CLIENT_SECRET` - From Google Cloud Console
+   - `GOOGLE_REFRESH_TOKEN` - Obtain via `/auth/google/url` endpoint
+   - `EMAIL_HOST`, `EMAIL_USER`, `EMAIL_PASS` - Your SMTP credentials
+
+   ### Optional:
+   - `VAPI_PHONE_NUMBER` - Only if using phone calls
+   - `PORT` - Default 5000
+   - `FRONTEND_URL` - Default http://localhost:3000
+
+3. See [Setup Guide](docs/SETUP.md) for detailed instructions on obtaining credentials.
